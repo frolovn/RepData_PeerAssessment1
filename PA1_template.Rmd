@@ -86,13 +86,14 @@ hist(stepsDay$steps, main = "Total number of steps per day", xlab = "Steps/day",
 meanOrig <- mean(stepsDay$steps)
 meanOrig
 ``` 
-
+## [1] 10766.19
 
 ``` {r}
 medianOrig <- median(stepsDay$steps)
 medianOrig
 ``` 
- 
+## [1] 10765
+
 
 ## What is the average daily activity pattern?
 * Make a time series plot (i.e. type="l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
@@ -113,11 +114,13 @@ The interval is:
 ``` {r}
 stepsInterval[which.max(stepsInterval$steps),]$interval
 ```
+## [1] 835
 
 The number of steps in this interval:
 ``` {r}
 stepsInterval$steps[which.max(stepsInterval$steps)]
 ```
+## [1] 206.1698
 
 ## Imputing missing values
 Note that there are a number of days/intervals where there are missing values (coded as **NA**). The presence of missing days may introduce bias into some calculations or summaries of the data.
@@ -127,7 +130,6 @@ Note that there are a number of days/intervals where there are missing values (c
 ``` {r}
 myActivityMissing <- myActivity[!complete.cases(myActivity), ]
 
-nrow(myActivityMissing)
 ```
 
 * Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
@@ -162,10 +164,14 @@ hist(impStepsDay$steps, main = "Total number of steps per day (with imputed valu
 meanImp <- mean(impStepsDay$steps)
 meanImp
 ```
+## [1] 10766.19
+
 ```{r}
 medianImp <- median(impStepsDay$steps)
 medianImp
 ```
+## [1] 10766.19
+
 
 * What is the impact of imputing missing data on the estimates of the total daily number of steps?
 ```{r echo=FALSE}
