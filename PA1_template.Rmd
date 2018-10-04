@@ -71,6 +71,7 @@ myActivity <- read.csv("activity.csv")
 * **Sum** up all steps taken per day.
 * Generate the **histogram** of steps per day.
 
+![](https://github.com/frolovn/RepData_PeerAssessment1/blob/master/instructions_fig/plot1.png)
 
 ``` {r}
 myCompleteActivity <- myActivity[complete.cases(myActivity), ]
@@ -96,6 +97,7 @@ medianOrig
 ## What is the average daily activity pattern?
 * Make a time series plot (i.e. type="l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
+![](https://github.com/frolovn/RepData_PeerAssessment1/blob/master/instructions_fig/plot2.png)
 ``` {r}
 stepsInterval <- aggregate(steps ~ interval, myCompleteActivity, mean)
 
@@ -129,6 +131,8 @@ nrow(myActivityMissing)
 
 * Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
+**It was decided to use mean for the given interval.**
+
 * Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 ``` {r}
@@ -143,6 +147,7 @@ for (i in 1:nrow(myActivityImputed)) {
 
 * Make a histogram of the total number of steps taken each day.
 
+![](https://github.com/frolovn/RepData_PeerAssessment1/blob/master/instructions_fig/plot3.png)
 ``` {r}
 impStepsDay <- aggregate(steps ~ date, myActivityImputed, sum)
 
@@ -161,6 +166,7 @@ medianImp
 ```
 
 * What is the impact of imputing missing data on the estimates of the total daily number of steps?
+![](https://github.com/frolovn/RepData_PeerAssessment1/blob/master/instructions_fig/plot4.png)
 ```{r echo=FALSE}
 par(mfrow=c(1,2))
 barplot(c(meanOrig, meanImp), names.arg=c("with NAs","Imputed"), col="red", main="Mean Steps per Day", ylim = c(0, 11500))
@@ -181,6 +187,7 @@ levels(myActivityImputed$daysOfWeek) <- list(weekday = c("Monday", "Tuesday", "W
 
 * Make a panel plot containing a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
 
+![](https://github.com/frolovn/RepData_PeerAssessment1/blob/master/instructions_fig/plot5.png)
 ```{r}
 library(lattice)
 
